@@ -1,0 +1,27 @@
+DEBUG get_query: SELECT value FROM swat_s1 WHERE name = ? AND pid = ?
+DEBUG set_query: UPDATE swat_s1 SET value = ? WHERE name = ? AND pid = ?
+DEBUG: plc2 is an Ethernet/IP device.
+DEBUG EnipProtocol server addr:  192.168.1.20
+DEBUG: concatenating server address with default port.
+DEBUG enip _start_server cmd:  ['/home/robbiemcgugan/anaconda3/envs/venv/bin/python', '-m', 'cpppo.server.enip', '--no-print', '--log', 'logs/protocols_tests_enip_server', '--address', '192.168.1.20:44818', 'FIT201:2=REAL', 'MV201:2=INT']
+DEBUG: swat-s1 plc2 enters pre_loop
+DEBUG: swat-s1 plc2 enters main_loop.
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000
+DEBUG PLC2 - get fit201: 2.450000

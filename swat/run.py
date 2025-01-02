@@ -19,8 +19,8 @@ from topo import SwatTopo
 import sys
 from rl_envs.envs.test import CustomEnv
 
-from test2 import SwatEnv, SwatS1CPS
-from test3 import MultiAgentSwatEnv
+from rl import SwatEnv, SwatS1CPS
+from marl import MultiAgentSwatEnv
 
 import shutil
 import time

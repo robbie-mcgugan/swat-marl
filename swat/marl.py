@@ -24,7 +24,7 @@ import ray
 from ray.rllib.env.multi_agent_env import MultiAgentEnv
 
 from collections import deque
-from swat.rl import SwatS1CPS
+from rl import SwatS1CPS
 
 from dotenv import load_dotenv
 import os
@@ -404,16 +404,16 @@ class MultiAgentSwatEnv(MultiAgentEnv):
         attacker.cmd('pkill -9 -f oscillating_dos.py')
 
         plc2.cmd('pkill -9 -f plc2.py')
-        plc2.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' +' plc2.py &> logs/plc2.log &')
+        plc2.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' +' plc2.py &> logs/plc2.log &')
 
         plc3.cmd('pkill -9 -f plc3.py')
-        plc3.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' plc3.py  &> logs/plc3.log &')
+        plc3.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' plc3.py  &> logs/plc3.log &')
 
         plc1.cmd('pkill -9 -f plc1.py')
-        plc1.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' plc1.py &> logs/plc1.log &')
+        plc1.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' plc1.py &> logs/plc1.log &')
 
         s1.cmd('pkill -9 -f physical_process.py')
-        s1.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' physical_process.py  &> logs/process.log &')
+        s1.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' physical_process.py  &> logs/process.log &')
 
         requests.get('http://localhost:5000/restart')
 
@@ -458,9 +458,9 @@ class MultiAgentSwatEnv(MultiAgentEnv):
         self.s += 1
 
         if self.s == 2:
-            self.attacker.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' dos.py  &> logs/attacker.log &')
+            self.attacker.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' dos.py  &> logs/attacker.log &')
         else:
-            self.attacker.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' oscillating_dos.py  &> logs/attacker.log &')
+            self.attacker.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' oscillating_dos.py  &> logs/attacker.log &')
 
         for i, action in action_dict.items():
             obs[i], rew[i], terminated[i], trunc[i], info[i] = self.agents[i].step(action)

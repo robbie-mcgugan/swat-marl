@@ -49,10 +49,10 @@ class SwatS1CPS(MiniCPS):
         # plc1.cmd(f'tc class add dev s1-eth1 parent 1: classid 1:1 htb rate 100kbit')
 
         # SPHINX_SWAT_TUTORIAL RUN(
-        s1.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' physical_process.py  &> logs/process.log &')
-        plc2.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' +' plc2.py &> logs/plc2.log &')
-        plc3.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' plc3.py  &> logs/plc3.log &')
-        plc1.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' plc1.py &> logs/plc1.log &')
+        s1.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' physical_process.py  &> logs/process.log &')
+        plc2.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' +' plc2.py &> logs/plc2.log &')
+        plc3.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' plc3.py  &> logs/plc3.log &')
+        plc1.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' plc1.py &> logs/plc1.log &')
         # attacker.cmd(sys.executable + ' -u ' + ' hmi.py  &> logs/attacker.log &')
 
         # attacker.cmd(sys.executable + ' -u ' + ' dos.py  &> logs/attacker.log &')
@@ -180,16 +180,16 @@ class SwatEnv(gym.Env):
         attacker.cmd('pkill -9 -f oscilating_dos.py')
 
         plc2.cmd('pkill -9 -f plc2.py')
-        plc2.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' +' plc2.py &> logs/plc2.log &')
+        plc2.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' +' plc2.py &> logs/plc2.log &')
 
         plc3.cmd('pkill -9 -f plc3.py')
-        plc3.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' plc3.py  &> logs/plc3.log &')
+        plc3.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' plc3.py  &> logs/plc3.log &')
 
         plc1.cmd('pkill -9 -f plc1.py')
-        plc1.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' plc1.py &> logs/plc1.log &')
+        plc1.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' plc1.py &> logs/plc1.log &')
 
         s1.cmd('pkill -9 -f physical_process.py')
-        s1.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' physical_process.py  &> logs/process.log &')
+        s1.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' physical_process.py  &> logs/process.log &')
 
         requests.get('http://localhost:5000/restart')
 
@@ -262,9 +262,9 @@ class SwatEnv(gym.Env):
 
         if self.i == 2:
             if random.random() < 0.5:
-                self.attacker.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' dos.py  &> logs/attacker.log &')
+                self.attacker.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' dos.py  &> logs/attacker.log &')
             else:
-                self.attacker.cmd(f'cd {os.getenv('PLC_FILE_PATH')} && ' + sys.executable + ' -u ' + ' oscillating_dos.py  &> logs/attacker.log &')
+                self.attacker.cmd(f'cd {os.getenv("PLC_FILE_PATH")} && ' + sys.executable + ' -u ' + ' oscillating_dos.py  &> logs/attacker.log &')
 
         return observation, self.reward, self.i >= self.episode_length, self.i >= self.episode_length, self.info
 
